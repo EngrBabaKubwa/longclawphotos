@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Harvest Loop</title>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Ubuntu:regular,bold&subset=Latin">
+    <%= favicon_link_tag 'favicon.png' %>
+  </head>
+
+  <body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-toggleable-sm navbar-custom">
+      <a class="navbar-brand"><%= image_tag('navbar-logo.png') %></a>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="nav-item"><%= link_to 'Welcome', root_path(:anchor => 'welcome'), class: 'nav-link' %></li>
+        <li class="nav-item"><%= link_to 'Demo', root_path(:anchor => 'demo'), class: 'nav-link' %></li>
+        <li class="nav-item"><%= link_to 'Contact', root_path(:anchor => 'contact'), class: 'nav-link' %></li>
+      </ul>
+    </nav>
+
+    <!-- Flash Messages -->
+    <% flash.each do |name, message| %>
+      <%= content_tag(:div, message, class: "alert alert-info #{name}") %>
+    <% end %>
+
+    <!-- Page Content -->
+    <%= yield %>
+  </body>
+</html>
